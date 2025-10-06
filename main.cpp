@@ -1,9 +1,9 @@
 /*
 * Title: Math Tutor V3
-* Programmer (s):Jac, Dane McClary
+* Programmer (s):Jacob Diedrichsen, Dane McClary
 * Date: 2025.09.22
 * Github: https://github.com/comcqu02/MathTutorV2
-*Description: A.
+*Description: An increasingly difficult Math Tutor to help students learn.
 *Description 2:
 */
 
