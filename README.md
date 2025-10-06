@@ -3,7 +3,7 @@ https://github.com/lifeparticle/Markdown-Cheatsheet
 https://youtu.be/eVGEea7adDM?si=cz1Fbqxr9VgioIEh
 -->
 
-# Math Tutor V2
+# Math Tutor V3
 
 <b>Table of Content</b>
 - [Summary](#summary)
@@ -45,5 +45,6 @@ Process finished with exit code 0
 
 ## Maintainers 
 [@CMcQueen15](https://github.com/CMcQueen15) Colton McQueen  
+
 
 [Back to Top](#math-tutor-v1)
