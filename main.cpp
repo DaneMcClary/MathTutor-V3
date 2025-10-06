@@ -1,9 +1,9 @@
 /*
-* Title: Math Tutor
-* Programmer (s):Colton McQueen, Dane McClary
+* Title: Math Tutor V3
+* Programmer (s):Jac, Dane McClary
 * Date: 2025.09.22
 * Github: https://github.com/comcqu02/MathTutorV2
-*Description: A easy Math Tutor for students.
+*Description: A.
 *Description 2:
 */
 
@@ -20,11 +20,18 @@ using namespace std;
 
 int main() {
     string name;
-    int leftn;
-    int rightn;
-    int correctAnswer = 0;
-    int mathType;
-    int userAnswer = 0;
+
+    const int MAX_ATTEMPTS = 3; // How many attempts the user has.
+    const int LEVEL_CHANGE = 10; // How much to increase the difficulty of the problem through numbers.
+
+    int leftn; // left value of the problem
+    int rightn; // right value of problem
+    int correctAnswer = 0; // The correct answer to the problem
+    int userAnswer = 0; // The answer the user enters into the problem.
+
+    enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
+    MathType mathType = MT_ADD;
+
     std::srand(std::time(nullptr));
 
     //   /\  Input any new values here please!
@@ -47,18 +54,18 @@ int main() {
     // generating the random numbers and math type
     leftn = std::rand() % 10 +1;
     rightn = std::rand() % 10 +1;
-    mathType = std::rand() % 4 +1;
+    mathType = static_cast<MathType>(rand() % 4);
 
     // if statement for the math type and question
 
    switch (mathType){
-     case 1:
+     case MT_ADD:
        correctAnswer = (leftn + rightn);
        cout << leftn << "+" << rightn <<"=";
        cin >> userAnswer;
        break;
 
-     case 2:
+     case MT_SUB:
        if (rightn > leftn) {
            correctAnswer =(rightn - leftn);
            cout << rightn <<"-" <<leftn <<"=";
@@ -73,13 +80,13 @@ int main() {
          }
          break;
 
-       case 3:
+       case MT_MUL:
        correctAnswer =(rightn * leftn);
        cout << rightn <<"*" <<leftn <<"=";
        cin >> userAnswer;
        break;
 
-       case 4:
+       case MT_DIV:
            if (rightn > leftn) {
                correctAnswer =(rightn / leftn);
                cout << rightn <<"/" <<leftn <<"=";
