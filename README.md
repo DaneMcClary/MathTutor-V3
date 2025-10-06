@@ -44,7 +44,8 @@ Process finished with exit code 0
 ```
 
 ## Maintainers 
-[@CMcQueen15](https://github.com/CMcQueen15) Colton McQueen  
+Dane McClary
 
 
 [Back to Top](#math-tutor-v1)
+
