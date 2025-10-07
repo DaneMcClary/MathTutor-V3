@@ -18,6 +18,8 @@
 
 using namespace std;
 
+void getline(const istream & cin, int user_choice);
+
 int main() {
     string name;
 
@@ -28,6 +30,7 @@ int main() {
     int rightn; // right value of problem
     int correctAnswer = 0; // The correct answer to the problem
     int userAnswer = 0; // The answer the user enters into the problem.
+    int userChoice = 0; // used to see if the user wants to continue with the program
 
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
     MathType mathType = MT_ADD;
@@ -115,7 +118,21 @@ int main() {
         cout << endl << "The correct number is " << correctAnswer << endl;
     }
 
+while (userAnswer == correctAnswer) {
+    cout << "Do you want to continue (y=yes | n=no)?";
+    getline(cin, userChoice);
 
+for (int i = 0 ; i < userChoice; i++) {
+
+}
+    if (userChoice == "y" || userChoice == "yes" ||
+        userChoice == "n" || userChoice == "no") {
+        break;
+    } else {
+        cout << "Invalid input, please try again" << endl;
+        cout << endl;
+    }
+}
   //  cout << endl << endl;
     //cout << "What is " << leftn << " + " << rightn << "?" << endl;
     // Asking the big question
