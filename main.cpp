@@ -21,8 +21,11 @@ using namespace std;
 
 void getline(const istream & cin, int user_choice);
 
+bool operator<(int lhs, const string & rhs);
+
 int main() {
     string name;
+    string userChoice = 0; // used to see if the user wants to continue with the program
 
     const int MAX_ATTEMPTS = 3; // How many attempts the user has.
     const int LEVEL_CHANGE = 10; // How much to increase the difficulty of the problem through numbers.
@@ -31,7 +34,6 @@ int main() {
     int rightn; // right value of problem
     int correctAnswer = 0; // The correct answer to the problem
     int userAnswer = 0; // The answer the user enters into the problem.
-    int userChoice = 0; // used to see if the user wants to continue with the program
 
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
     MathType mathType = MT_ADD;
@@ -50,33 +52,34 @@ int main() {
         cout <<   "  | || | | | __/ _ \| '__|  \ \ / /  |_ \                    " << endl;
         cout <<   "  | || |_| | || (_) | |      \ V /  ___) |                   " << endl;
         cout <<   "  |_| \__,_|\__\___/|_|       \_/  |____/                    " << endl;
-    cout << endl << "***********************************************************" << endl;
-    cout << "Math is good for your brain." << endl;
-    cout << "So lets feed your brain some math!" << endl << endl;
-    cout << "What is your name my pupil? :";
-    getline(cin, name);
-    cout << "Hello ";
-    cout << name << ". Lets learn some math!!!" << endl;
+        cout << endl << "*******************************************************" << endl;
+        cout << "Math is good for your brain." << endl;
+        cout << "So lets feed your brain some math!" << endl << endl;
+        cout << "What is your name my pupil? :";
+        getline(cin, name); // gets the users name
+        cout << "Hello ";
+        cout << name << ". Lets learn some math!!!" << endl;
     // This is the introduction of the program before the math. Only one string value used.
 
     // generating the random numbers and math type
-    leftn = std::rand() % 10 +1;
-    rightn = std::rand() % 10 +1;
-    mathType = static_cast<MathType>(rand() % 4);
+    leftn = std::rand() % 10 +1; // random value for left number
+    rightn = std::rand() % 10 +1; // random value for the right number
+    mathType = static_cast<MathType>(rand() % 4); // random variable for math operator
 
     // if statement for the math type and question
 do {
 
  }while (userChoice == "yes" || userChoice == "y");
     {
+
         switch (mathType){
-            case MT_ADD:
+            case MT_ADD: // case for addition
                 correctAnswer = (leftn + rightn);
                 cout << leftn << "+" << rightn <<"=";
                 cin >> userAnswer;
                 break;
 
-            case MT_SUB:
+            case MT_SUB: // case for subtraction
                 if (rightn > leftn) {
                     correctAnswer =(rightn - leftn);
                     cout << rightn <<"-" <<leftn <<"=";
@@ -91,13 +94,13 @@ do {
                 }
                 break;
 
-            case MT_MUL:
+            case MT_MUL: // case for multiplication
                 correctAnswer =(rightn * leftn);
                 cout << rightn <<"*" <<leftn <<"=";
                 cin >> userAnswer;
                 break;
 
-            case MT_DIV:
+            case MT_DIV: // case for division
                 if (rightn > leftn) {
                     correctAnswer =(rightn / leftn);
                     cout << rightn <<"/" <<leftn <<"=";
@@ -112,7 +115,7 @@ do {
                 }
                 break;
 
-            default:
+            default: // if the code breaks
                 cout << "Display error -1" << endl << "contact DaneMcClary on Github";
                 break;
 
@@ -127,6 +130,7 @@ do {
 
         cout << "\tInvalid imput!" << endl;
         cout << "\tPlease enter a number: ";
+
     } // end of the get userAnswer while loop
 
     if (userAnswer == correctAnswer) {
