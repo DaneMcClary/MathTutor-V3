@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <cctype>
 #include <ios>
+#include <limits>
 
 
 using namespace std;
@@ -38,14 +39,18 @@ int main() {
     std::srand(std::time(nullptr));
 
     //   /\  Input any new values here please!
-    cout << "*********************************" << endl;
-    cout << "__  __       _   _       _____      _              __     ___ \n";
-    cout << "|  \\/  | __ _| |_| |__   |_   _|   _| |_ ___  _ __  \\ \\   / / |\n";
-    cout << "| |\\/| |/ _` | __| '_ \\    | || | | | __/ _ \\| '__|  \\ \\ / /| |\n";
-    cout << "| |  | | (_| | |_| | | |   | || |_| | || (_) | |      \\ V / | |\n";
-    cout << "|_|  |_|\\__,_|\\__|_| |_|   |_| \\__,_|\\__\\___/|_|       \\_/  |_|\n";
-
-    cout << endl << "*********************************" << endl;
+        cout << "***************************************************************" << endl;
+        cout <<   " __  __       _   _       __  __       _   _                 " << endl;
+        cout <<   "|  \/  | __ _| |_| |__   |  \/  | __ _| |_| |_ ___ _ __ ___  " << endl;
+        cout <<   "| |\/| |/ _` | __| '_ \  | |\/| |/ _` | __| __/ _ \ '__/ __| " << endl;
+        cout <<   "| |  | | (_| | |_| | | | | |  | | (_| | |_| ||  __/ |  \__ \ " << endl;
+        cout <<   "|_|  |_|\__,_|\__|_| |_| |_|  |_|\__,_|\__|\__\___|_|  |___/ " << endl;
+        cout <<   " _____      _              __     _______                    " << endl;
+        cout <<   "|_   _|   _| |_ ___  _ __  \ \   / /___ /                    " << endl;
+        cout <<   "  | || | | | __/ _ \| '__|  \ \ / /  |_ \                    " << endl;
+        cout <<   "  | || |_| | || (_) | |      \ V /  ___) |                   " << endl;
+        cout <<   "  |_| \__,_|\__\___/|_|       \_/  |____/                    " << endl;
+    cout << endl << "***********************************************************" << endl;
     cout << "Math is good for your brain." << endl;
     cout << "So lets feed your brain some math!" << endl << endl;
     cout << "What is your name my pupil? :";
@@ -60,56 +65,69 @@ int main() {
     mathType = static_cast<MathType>(rand() % 4);
 
     // if statement for the math type and question
+do {
 
-   switch (mathType){
-     case MT_ADD:
-       correctAnswer = (leftn + rightn);
-       cout << leftn << "+" << rightn <<"=";
-       cin >> userAnswer;
-       break;
+ }while (userChoice == "yes" || userChoice == "y");
+    {
+        switch (mathType){
+            case MT_ADD:
+                correctAnswer = (leftn + rightn);
+                cout << leftn << "+" << rightn <<"=";
+                cin >> userAnswer;
+                break;
 
-     case MT_SUB:
-       if (rightn > leftn) {
-           correctAnswer =(rightn - leftn);
-           cout << rightn <<"-" <<leftn <<"=";
-           cin >> userAnswer;
-         }
-
-
-       else {
-           correctAnswer = (leftn - rightn);
-           cout << leftn <<"-" <<rightn <<"=";
-           cin >> userAnswer;
-         }
-         break;
-
-       case MT_MUL:
-       correctAnswer =(rightn * leftn);
-       cout << rightn <<"*" <<leftn <<"=";
-       cin >> userAnswer;
-       break;
-
-       case MT_DIV:
-           if (rightn > leftn) {
-               correctAnswer =(rightn / leftn);
-               cout << rightn <<"/" <<leftn <<"=";
-               cin >> userAnswer;
-           }
+            case MT_SUB:
+                if (rightn > leftn) {
+                    correctAnswer =(rightn - leftn);
+                    cout << rightn <<"-" <<leftn <<"=";
+                    cin >> userAnswer;
+                }
 
 
-           else {
-               correctAnswer = (leftn / rightn);
-               cout << leftn <<"/" <<rightn <<"=";
-               cin >> userAnswer;
-           }
-       break;
+                else {
+                    correctAnswer = (leftn - rightn);
+                    cout << leftn <<"-" <<rightn <<"=";
+                    cin >> userAnswer;
+                }
+                break;
 
-       default:
-           cout << "Display error -1" << endl << "contact DaneMcClary on Github";
-       break;
+            case MT_MUL:
+                correctAnswer =(rightn * leftn);
+                cout << rightn <<"*" <<leftn <<"=";
+                cin >> userAnswer;
+                break;
 
-}
+            case MT_DIV:
+                if (rightn > leftn) {
+                    correctAnswer =(rightn / leftn);
+                    cout << rightn <<"/" <<leftn <<"=";
+                    cin >> userAnswer;
+                }
 
+
+                else {
+                    correctAnswer = (leftn / rightn);
+                    cout << leftn <<"/" <<rightn <<"=";
+                    cin >> userAnswer;
+                }
+                break;
+
+            default:
+                cout << "Display error -1" << endl << "contact DaneMcClary on Github";
+                break;
+
+        }
+        //loop until the user enters a number
+        while (!(cin >> userAnswer)) {
+            cin.clear(); // clears the cin error flag
+
+            //!!Still need to include the limits library to use numeric_limits!!
+
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');} // ignores the max input, up to 'endl'
+
+        cout << "\tInvalid imput!" << endl;
+        cout << "\tPlease enter a number: ";
+    } // end of the get userAnswer while loop
 
     if (userAnswer == correctAnswer) {
         cout << endl << "Your answer is correct." << endl;
@@ -125,14 +143,15 @@ while (userAnswer == correctAnswer) {
 for (int i = 0 ; i < userChoice; i++) {
 
 }
-    if (userChoice == "y" || userChoice == "yes" ||
-        userChoice == "n" || userChoice == "no") {
+    if ((userChoice == "y" || userChoice == "yes") ||
+        (userChoice == "n" || userChoice == "no")) {
         break;
     } else {
         cout << "Invalid input, please try again" << endl;
         cout << endl;
     }
 }
+
   //  cout << endl << endl;
     //cout << "What is " << leftn << " + " << rightn << "?" << endl;
     // Asking the big question
