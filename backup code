@@ -38,6 +38,7 @@ int main() {
     int totalIncorrect = 0; // The total number of answers the user gets incorrect
     int mathLevel = 1; // The level of difficult of the math problem
     int currentRange = LEVEL_CHANGE; // Assigns the difficulty of the problem
+    int remainingAttempts = MAX_ATTEMPTS;
 
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
     MathType mathType = MT_ADD;
@@ -177,5 +178,13 @@ for (int i = 1; i <= MAX_ATTEMPTS; i++) {
 
     if (userAnswer == correctAnswer) {
         totalCorrect = totalCorrect +1;
+        break;
+
+    } else if (remainingAttempts == 0){
+      cout << correctAnswer << endl;
+      tottalCorrect - totalIncorrect;
     }
+    else {
+      cout << "That is incorrect." << endl;
+      cout << "You have " << remainingAttempts << " left." << endl;
 }
