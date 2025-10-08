@@ -1,8 +1,8 @@
 /*
 * Title: Math Tutor V3
 * Programmer (s):Jacob Diedrichsen, Dane McClary
-* Date: 2025.09.22
-* Github: https://github.com/comcqu02/MathTutorV2
+* Date: 2025.10.10
+* Github: https://github.com/DaneMcClary/MathTutor-V3
 *Description: An increasingly difficult Math Tutor to help students learn.
 *Description 2:
 */
@@ -13,22 +13,17 @@
 #include <cmath>
 #include <cstdlib>
 #include <cctype>
-#include <ios>
-#include <limits>
+#include <random>
+
 
 
 using namespace std;
 
-void getline(const istream & cin, int user_choice);
-
-bool operator<(int lhs, const string & rhs);
 
 int main() {
     string name;
-    string userChoice = 0; // used to see if the user wants to continue with the program
 
-    const int MAX_ATTEMPTS = 3; // How many attempts the user has.
-    const int LEVEL_CHANGE = 10; // How much to increase the difficulty of the problem through numbers.
+
 
     int leftn; // left value of the problem
     int rightn; // right value of problem
@@ -38,10 +33,10 @@ int main() {
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
     MathType mathType = MT_ADD;
 
-    std::srand(std::time(nullptr));
+
 
     //   /\  Input any new values here please!
-        cout << "***************************************************************" << endl;
+        cout <<   "*************************************************************" << endl;
         cout <<   " __  __       _   _       __  __       _   _                 " << endl;
         cout <<   "|  \/  | __ _| |_| |__   |  \/  | __ _| |_| |_ ___ _ __ ___  " << endl;
         cout <<   "| |\/| |/ _` | __| '_ \  | |\/| |/ _` | __| __/ _ \ '__/ __| " << endl;
@@ -52,7 +47,7 @@ int main() {
         cout <<   "  | || | | | __/ _ \| '__|  \ \ / /  |_ \                    " << endl;
         cout <<   "  | || |_| | || (_) | |      \ V /  ___) |                   " << endl;
         cout <<   "  |_| \__,_|\__\___/|_|       \_/  |____/                    " << endl;
-        cout << endl << "*******************************************************" << endl;
+        cout <<   "*************************************************************" << endl;
         cout << "Math is good for your brain." << endl;
         cout << "So lets feed your brain some math!" << endl << endl;
         cout << "What is your name my pupil? :";
@@ -67,10 +62,6 @@ int main() {
     mathType = static_cast<MathType>(rand() % 4); // random variable for math operator
 
     // if statement for the math type and question
-do {
-
- }while (userChoice == "yes" || userChoice == "y");
-    {
 
         switch (mathType){
             case MT_ADD: // case for addition
@@ -120,18 +111,7 @@ do {
                 break;
 
         }
-        //loop until the user enters a number
-        while (!(cin >> userAnswer)) {
-            cin.clear(); // clears the cin error flag
 
-            //!!Still need to include the limits library to use numeric_limits!!
-
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');} // ignores the max input, up to 'endl'
-
-        cout << "\tInvalid imput!" << endl;
-        cout << "\tPlease enter a number: ";
-
-    } // end of the get userAnswer while loop
 
     if (userAnswer == correctAnswer) {
         cout << endl << "Your answer is correct." << endl;
@@ -140,21 +120,9 @@ do {
         cout << endl << "The correct number is " << correctAnswer << endl;
     }
 
-while (userAnswer == correctAnswer) {
-    cout << "Do you want to continue (y=yes | n=no)?";
-    getline(cin, userChoice);
 
-for (int i = 0 ; i < userChoice; i++) {
 
-}
-    if ((userChoice == "y" || userChoice == "yes") ||
-        (userChoice == "n" || userChoice == "no")) {
-        break;
-    } else {
-        cout << "Invalid input, please try again" << endl;
-        cout << endl;
-    }
-}
+
 
   //  cout << endl << endl;
     //cout << "What is " << leftn << " + " << rightn << "?" << endl;
@@ -166,3 +134,4 @@ for (int i = 0 ; i < userChoice; i++) {
 
     return 0;
 }
+
