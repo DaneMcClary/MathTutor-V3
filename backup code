@@ -40,6 +40,7 @@ int main() {
     int currentRange = LEVEL_CHANGE; // Assigns the difficulty of the problem
     int remainingAttempts = MAX_ATTEMPTS;
 
+
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
     MathType mathType = MT_ADD;
 
@@ -75,6 +76,7 @@ int main() {
 do {
 
  }while (userChoice == "yes" || userChoice == "y");
+    remainingAttempts = remainingAttempts - 1;
     {
 
         switch (mathType){
@@ -144,7 +146,9 @@ do {
     else {
         cout << endl << "The correct number is " << correctAnswer << endl;
     }
-
+}while (userChoice == "yes" || userChoice == "y");
+    remainingAttempts = remainingAttempts - 1;
+    {
 while (userAnswer == correctAnswer) {
     cout << "Do you want to continue (y=yes | n=no)?";
     getline(cin, userChoice);
@@ -177,14 +181,16 @@ for (int i = 1; i <= MAX_ATTEMPTS; i++) {
     cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << mathType << rightn << "=";
 
     if (userAnswer == correctAnswer) {
-        totalCorrect = totalCorrect +1;
+        totalCorrect = totalCorrect + 1;
         break;
 
     } else if (remainingAttempts == 0){
       cout << correctAnswer << endl;
-      tottalCorrect - totalIncorrect;
+      totalCorrect - totalIncorrect = finalCorrect;
     }
     else {
       cout << "That is incorrect." << endl;
+      totalIncorrect = totalIncorrect + 1;
       cout << "You have " << remainingAttempts << " left." << endl;
 }
+

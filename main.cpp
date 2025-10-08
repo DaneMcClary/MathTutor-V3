@@ -21,7 +21,8 @@ using namespace std;
 
 
 int main() {
-    string name;
+    string name = "?"; // Gets the users name
+    string userChoice = "?"; // Gets the users choice
 
 
 
@@ -55,7 +56,8 @@ int main() {
         cout << "Hello ";
         cout << name << ". Lets learn some math!!!" << endl;
     // This is the introduction of the program before the math. Only one string value used.
-
+    //
+    do {
     // generating the random numbers and math type
     leftn = std::rand() % 10 +1; // random value for left number
     rightn = std::rand() % 10 +1; // random value for the right number
@@ -119,6 +121,7 @@ int main() {
     else {
         cout << endl << "The correct number is " << correctAnswer << endl;
     }
+    }while (userChoice == "yes" || userChoice == "y");
 
 
 
