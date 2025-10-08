@@ -18,7 +18,6 @@
 #include <random>
 
 
-
 using namespace std;
 
 
@@ -26,12 +25,18 @@ int main() {
     string name = "?"; // Gets the users name
     string userChoice = "?"; // Gets the users choice
 
-
+    const int MAX_ATTEMPTS = 3; // How many attempts the user has.
+    const int LEVEL_CHANGE = 10; // How much to increase the difficulty of the problem through numbers.
 
     int leftn; // left value of the problem
     int rightn; // right value of problem
     int correctAnswer = 0; // The correct answer to the problem
     int userAnswer = 0; // The answer the user enters into the problem.
+    int totalCorrect = 0; // The total number of answers the user gets correct
+    int totalIncorrect = 0; // The total number of answers the user gets incorrect
+    int mathLevel = 1; // The level of difficult of the math problem
+    int currentRange = LEVEL_CHANGE; // Assigns the difficulty of the problem
+    int remainingAttempts = MAX_ATTEMPTS;
 
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
     MathType mathType = MT_ADD;
@@ -65,13 +70,16 @@ int main() {
         rightn = std::rand() % 10 +1; // random value for the right number
         mathType = static_cast<MathType>(rand() % 4); // random variable for math operator
 
+
         // if statement for the math type and question
 
         switch (mathType) {
             case MT_ADD:
                 correctAnswer = leftn + rightn;
-                cout << leftn << " + " << rightn;
-                cout << " = ";
+                for (int i = 1; i <= MAX_ATTEMPTS; i++) {
+                    cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << mathType << rightn << "=";
+                    break;
+                }
                 while (!(cin >> userAnswer)) {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -83,9 +91,11 @@ int main() {
 
 
             case MT_SUB:
-                correctAnswer = leftn + rightn;
-                cout << leftn << " + " << rightn;
-                cout << " = ";
+                correctAnswer = leftn - rightn;
+                for (int i = 1; i <= MAX_ATTEMPTS; i++) {
+                    cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << mathType << rightn << "=";
+                    break;
+                }
                 while (!(cin >> userAnswer)) {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -96,21 +106,25 @@ int main() {
 
 
                 if (correctAnswer = (leftn - rightn)) {
-                    cout << leftn <<"-" << rightn;
-                    cout << " = ";
+                    for (int i = 1; i <= MAX_ATTEMPTS; i++) {
+                        cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << mathType << rightn << "=";
+                        break;
+                    }
                     while (!(cin >> userAnswer)) {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cout << "\tInvalid input!" << endl;
                         cout << "\tPlease enter a number: ";
                     }
+                }
                     break;
 
-
                     case MT_MUL:
-                    correctAnswer = leftn + rightn;
-                    cout << leftn << " + " << rightn;
-                    cout << " = ";
+                    correctAnswer = leftn * rightn;
+                for (int i = 1; i <= MAX_ATTEMPTS; i++) {
+                    cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << mathType << rightn << "=";
+                break;
+                }
                     while (!(cin >> userAnswer)) {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -122,9 +136,11 @@ int main() {
 
 
                     case MT_DIV:
-                    correctAnswer = leftn + rightn;
-                    cout << leftn << " + " << rightn;
-                    cout << " = ";
+                    correctAnswer = leftn / rightn;
+                for (int i = 1; i <= MAX_ATTEMPTS; i++) {
+                    cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << mathType << rightn << "=";
+                break;
+                }
                     while (!(cin >> userAnswer)) {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -143,6 +159,7 @@ int main() {
                             cout << "\tInvalid input!" << endl;
                             cout << "\tPlease enter a number: ";
                         }
+                    }
                         break;
 
                         default: // if the code breaks
@@ -158,19 +175,30 @@ int main() {
 
 
 
+                    }
 
-                        //  cout << endl << endl;
-                        //cout << "What is " << leftn << " + " << rightn << "?" << endl;
-                        // Asking the big question
-                        // cin >> answer;
-                        // Getting an answer for the question
-                        //   cout << "Thank you for using our beta version of Math Tutor! More is on the way." << endl;
+
+                cout << "Thank you for using our beta version of Math Tutor! More is on the way." << endl;
+                while (true) {
+                    cout << "Do you want to continue?(y=yes | n=no)? ";
+                    getline (cin, userChoice);
+
+
+                    for (int i = 0; i < userChoice.size(); i++) {
+                        userChoice[i] = tolower(userChoice[i]);
 
                     }
+
+                    if  (userChoice == "y" || userChoice == "yes" || userChoice == "n" || userChoice == "no") {
+                        break;
+                    }else {
+                        cout << "Invaild input, please try again..." << endl;
+                    }
                 }
-        }
 
-    } while (userChoice == "yes" || userChoice == "y");
+
+    }
+        while (userChoice == "yes" || userChoice == "y");
+        remainingAttempts = remainingAttempts - 1;
     return 0;
-}
-
+    }
