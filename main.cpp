@@ -37,7 +37,6 @@ int main() {
     int totalCorrect = 0; // The total number of answers the user gets correct
     int totalIncorrect = 0; // The total number of answers the user gets incorrect;
     int mathLevel = 1; // The level of difficult of the math problem
-    int currentRange = LEVEL_CHANGE; // Assigns the difficulty of the problem
     int remainingAttempts = MAX_ATTEMPTS;
     int finalCorrect = 0;
 
@@ -71,8 +70,20 @@ int main() {
     //
     do {
         // generating the random numbers and math type
-        leftn = std::rand() % 10 +1; // random value for left number
-        rightn = std::rand() % 10 +1; // random value for the right number
+        if (mathLevel == 1) {
+            leftn = std::rand() % 10 +1; // random value for left number
+            rightn = std::rand() % 10 +1; // random value for the right number
+
+        } else if (mathLevel == 2) {
+            leftn = std::rand() % 10 +11;
+            rightn = std::rand() % 10 +11;
+        } else if (mathLevel == 3) {
+            leftn = std::rand() % 10 +21;
+            rightn = std::rand() % 10 +21;
+        } else {
+            cout << "There has been and error." << endl;
+        }
+
         mathType = static_cast<MathType>(rand() % 4); // random variable for math operator
 
 
@@ -93,8 +104,6 @@ int main() {
                 }
                 break;
 
-
-
             case MT_SUB:
                 correctAnswer = leftn - rightn;
                 if (leftn < rightn) {
@@ -114,7 +123,6 @@ int main() {
                 }
                 break;
 
-
                 if (correctAnswer = (leftn - rightn)) {
                     for (int i = 1; i <= MAX_ATTEMPTS; i++) {
                         cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << "-" << rightn << "=";
@@ -127,98 +135,124 @@ int main() {
                         cout << "\tPlease enter a number: ";
                     }
                 }
-                    break;
+                break;
 
-                    case MT_MUL:
-                    correctAnswer = leftn * rightn;
+            case MT_MUL:
+                correctAnswer = leftn * rightn;
                 for (int i = 1; i <= MAX_ATTEMPTS; i++) {
                     cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << "*" << rightn << "=";
-                break;
-                }
-                    while (!(cin >> userAnswer)) {
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        cout << "\tInvalid input!" << endl;
-                        cout << "\tPlease enter a number: ";
-                    }
                     break;
+                }
+                while (!(cin >> userAnswer)) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "\tInvalid input!" << endl;
+                    cout << "\tPlease enter a number: ";
+                }
+                break;
 
-
-
-                    case MT_DIV:
-                    correctAnswer = product / rightn;
-                    product = leftn * rightn;
-
+            case MT_DIV:
+                product = (leftn * rightn);
+                correctAnswer = (product / rightn);
 
                 for (int i = 1; i <= MAX_ATTEMPTS; i++) {
-                    cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << "/" << rightn << "=";
-                break;
+                    cout << "[Level #" << mathLevel << "] " << name << ", what does " << product << "/" << rightn << "=";
+                    break;
                 }
+                while (!(cin >> userAnswer)) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "\tInvalid input!" << endl;
+                    cout << "\tPlease enter a number: ";
+                }
+                break;
+
+                if (correctAnswer = (leftn / rightn)) {
+                    cout << leftn <<"/" << rightn;
+                    cout << " = ";
                     while (!(cin >> userAnswer)) {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cout << "\tInvalid input!" << endl;
                         cout << "\tPlease enter a number: ";
                     }
+                }
+                break;
+
+            default: // if the code breaks
+                cout << "Display error -1" << endl << "contact DaneMcClary on Github";
+                break;
+
+        }
+        // end of the get userAnswer while loop
+        if (userAnswer == correctAnswer) {
+            cout << endl << "Your answer is correct." << endl;
+        }else {
+            cout << endl << "The correct number is " << correctAnswer << endl;
+        }
+        getline(cin, userChoice);
+        while (true) {
+            cout << "Do you want to continue?(y=yes | n=no)? ";
+            getline (cin, userChoice);
+
+            for (int i = 0; i < userChoice.size(); i++) {
+                userChoice[i] = tolower(userChoice[i]);
+
+                if (userChoice == "y" || userChoice == "yes" || userChoice == "n" || userChoice == "no") {
                     break;
 
+                }else {
+                    cout << "Invaild input, please try again..." << endl;
+                }
 
-                    if (correctAnswer = (leftn / rightn)) {
-                        cout << leftn <<"/" << rightn;
-                        cout << " = ";
-                        while (!(cin >> userAnswer)) {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "\tInvalid input!" << endl;
-                            cout << "\tPlease enter a number: ";
-                        }
-                    }
-                        break;
+                if (userAnswer == correctAnswer) {
+                    totalCorrect = totalCorrect + 1;
+                    break;
 
-                        default: // if the code breaks
-                        cout << "Display error -1" << endl << "contact DaneMcClary on Github";
-                        break;
+                } else if (remainingAttempts == 0){
+                    cout << correctAnswer << endl;
+                    finalCorrect = totalCorrect - totalIncorrect;
+                    cout << totalCorrect << "-" << totalIncorrect << "=" << finalCorrect << endl;
+                    break;
+                }
+                else {
+                    cout << "That is incorrect." << endl;
+                    totalIncorrect = totalIncorrect + 1;
+                    cout << "You have " << remainingAttempts << " left." << endl;
 
-                    }
-                    // end of the get userAnswer while loop
-                    if (userAnswer == correctAnswer) {
-                        cout << endl << "Your answer is correct." << endl;
-                    }else {
-                        cout << endl << "The correct number is " << correctAnswer << endl;
+                }
+
+                if (finalCorrect == 3) {
+                    mathLevel = mathLevel + 1;
+                    totalCorrect = 0;
+                    totalIncorrect = 0;
+                    mathLevel = mathLevel + 1;
+                    cout << "You have leveled up to level " << mathLevel << " ." << endl;
+                }
+                else if ((finalCorrect == 0) && (mathLevel > 1)) {
+                    mathLevel = mathLevel - 1;
+                    totalCorrect = 0;
+                    totalIncorrect = 0;
+                    mathLevel = mathLevel - 1;
+                    cout << "You have leveled down to level " << mathLevel << " ." << endl;
+                }
+
+            }
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
 
 
-
-                    }
-
-    } while (!(userAnswer == correctAnswer) && remainingAttempts > 0);
-
-    // --- Level Up Logic ---
-    // A common pattern is to increase difficulty (level) after a certain number of correct answers.
-    // For simplicity here, let's just increment mathLevel after each correct answer (you can change this logic).
-    if (userAnswer == correctAnswer) {
-        mathLevel++;
-        // Potentially increase number range based on mathLevel
-        currentRange = LEVEL_CHANGE * (mathLevel / 5 + 1); // Increase range every 5 levels
     }
 
-        do {
-            cout << endl << "Do you want to continue (y/n)? ";
-            getline(cin, userChoice);
-
-            // Convert to lowercase and take only the first character for simple check
-            if (!userChoice.empty()) {
-                userChoice[0] = tolower(userChoice[0]);
-            }
-
-            if (userChoice.size() == 1 && (userChoice[0] == 'y' || userChoice[0] == 'n')) {
-                break; // Valid input, exit the inner loop
+        while (userChoice == "yes" || userChoice == "y");{
+            if (remainingAttempts == 0){
+            cout << endl << "You are out of attempts." << endl;
             } else {
-                cout << "Invalid input, please enter 'y' for yes or 'n' for no." << endl;
+                 cout << "You have chosen to play again." << endl;
+                    remainingAttempts = remainingAttempts - 1;
             }
-        } while (true);
-
-     while (userChoice[0] == 'y');
-
-
+        }
     return 0;
-    }
+}
+
+
