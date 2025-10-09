@@ -15,6 +15,7 @@
 #include <cctype>
 #include <ios>
 #include <limits>
+#include <random>
 
 
 using namespace std;
@@ -24,21 +25,27 @@ void getline(const istream & cin, int user_choice);
 bool operator<(int lhs, const string & rhs);
 
 int main() {
-    string name;
-    string userChoice = 0; // used to see if the user wants to continue with the program
+
+ std::srand(std::time(0));
+
+
+   string name = "?"; // Gets the users name
+   string userChoice = "?; //
 
     const int MAX_ATTEMPTS = 3; // How many attempts the user has.
-    const int LEVEL_CHANGE = 10; // How much to increase the difficulty of the problem through numbers.
+    const int LEVEL_CHANGE = 10; // Level of increase in the problem.
 
-    int leftn; // left value of the problem
-    int rightn; // right value of problem
+    int leftn = 0; // left number of the problem
+    int rightn = 0; // right number of problem
+    int product = 0; // used to make all division problems have whole numbers
+    int tempVar = 0; // used to make sure subtraction problems dont give negatives
     int correctAnswer = 0; // The correct answer to the problem
     int userAnswer = 0; // The answer the user enters into the problem.
     int totalCorrect = 0; // The total number of answers the user gets correct
     int totalIncorrect = 0; // The total number of answers the user gets incorrect
     int mathLevel = 1; // The level of difficult of the math problem
     int currentRange = LEVEL_CHANGE; // Assigns the difficulty of the problem
-    int remainingAttempts = MAX_ATTEMPTS;
+
 
 
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
@@ -47,18 +54,18 @@ int main() {
     std::srand(std::time(nullptr));
 
     //   /\  Input any new values here please!
-        cout <<   "*************************************************************" << endl;
-        cout <<   " __  __       _   _       __  __       _   _                 " << endl;
-        cout <<   "|  \/  | __ _| |_| |__   |  \/  | __ _| |_| |_ ___ _ __ ___  " << endl;
-        cout <<   "| |\/| |/ _` | __| '_ \  | |\/| |/ _` | __| __/ _ \ '__/ __| " << endl;
-        cout <<   "| |  | | (_| | |_| | | | | |  | | (_| | |_| ||  __/ |  \__ \ " << endl;
-        cout <<   "|_|  |_|\__,_|\__|_| |_| |_|  |_|\__,_|\__|\__\___|_|  |___/ " << endl;
-        cout <<   " _____      _              __     _______                    " << endl;
-        cout <<   "|_   _|   _| |_ ___  _ __  \ \   / /___ /                    " << endl;
-        cout <<   "  | || | | | __/ _ \| '__|  \ \ / /  |_ \                    " << endl;
-        cout <<   "  | || |_| | || (_) | |      \ V /  ___) |                   " << endl;
-        cout <<   "  |_| \__,_|\__\___/|_|       \_/  |____/                    " << endl;
-        cout <<   "*************************************************************" << endl;
+    cout <<   R"(****************************************************************)" << endl;
+    cout <<   R"(  __  __       _   _         __  __       _   _                 )" << endl;
+    cout <<   R"( |  \/  | __ _| |_| |__     |  \/  | __ _| |_| |_ ___ _ __ ___  )" << endl;
+    cout <<   R"( | |\/| |/ _` | __| '_ \    | |\/| |/ _` | __| __/ _ \ '__/ __| )" << endl;
+    cout <<   R"( | |  | | (_| | |_| | | |   | |  | | (_| | |_| ||  __/ |  \__ \ )" << endl;
+    cout <<   R"( |_|  |_|\__,_|\__|_| |_|   |_|  |_|\__,_|\__|\__\___|_|  |___/ )" << endl;
+    cout <<   R"(  _____      _                __     _______                    )" << endl;
+    cout <<   R"( |_   _|   _| |_ ___  _ __    \ \   / /___ /                    )" << endl;
+    cout <<   R"(   | || | | | __/ _ \| '__|    \ \ / /  |_ \                    )" << endl;
+    cout <<   R"(   | || |_| | || (_) | |        \ V /  ___) |                   )" << endl;
+    cout <<   R"(   |_| \__,_|\__\___/|_|         \_/  |____/                    )" << endl;
+    cout <<   R"(****************************************************************)" << endl;
         cout << "Math is good for your brain." << endl;
         cout << "So lets feed your brain some math!" << endl << endl;
         cout << "What is your name my pupil? :";
@@ -68,129 +75,55 @@ int main() {
     // This is the introduction of the program before the math. Only one string value used.
 
     // generating the random numbers and math type
-    leftn = std::rand() % 10 +1; // random value for left number
-    rightn = std::rand() % 10 +1; // random value for the right number
-    mathType = static_cast<MathType>(rand() % 4); // random variable for math operator
-
-    // if statement for the math type and question
-do {
-
- }while (userChoice == "yes" || userChoice == "y");
-    remainingAttempts = remainingAttempts - 1;
-    {
-
-        switch (mathType){
-            case MT_ADD: // case for addition
-                correctAnswer = (leftn + rightn);
-                cout << leftn << "+" << rightn <<"=";
-                cin >> userAnswer;
-                break;
-
-            case MT_SUB: // case for subtraction
-                if (rightn > leftn) {
-                    correctAnswer =(rightn - leftn);
-                    cout << rightn <<"-" <<leftn <<"=";
-                    cin >> userAnswer;
-                }
+    do {
+       // Reset attempts for the new problem
+       int remainingAttempts = MAX_ATTEMPTS;
+       bool answeredCorrectly = false;
 
 
-                else {
-                    correctAnswer = (leftn - rightn);
-                    cout << leftn <<"-" <<rightn <<"=";
-                    cin >> userAnswer;
-                }
-                break;
-
-            case MT_MUL: // case for multiplication
-                correctAnswer =(rightn * leftn);
-                cout << rightn <<"*" <<leftn <<"=";
-                cin >> userAnswer;
-                break;
-
-            case MT_DIV: // case for division
-                if (rightn > leftn) {
-                    correctAnswer =(rightn / leftn);
-                    cout << rightn <<"/" <<leftn <<"=";
-                    cin >> userAnswer;
-                }
+       // Generate random numbers and math type, using currentRange for max value
+       leftn = std::rand() % currentRange + 1;
+       rightn = std::rand() % currentRange + 1;
+       mathType = static_cast<MathType>(rand() % 4);
 
 
-                else {
-                    correctAnswer = (leftn / rightn);
-                    cout << leftn <<"/" <<rightn <<"=";
-                    cin >> userAnswer;
-                }
-                break;
-
-            default: // if the code breaks
-                cout << "Display error -1" << endl << "contact DaneMcClary on Github";
-                break;
-
-        }
-        //loop until the user enters a number
-        while (!(cin >> userAnswer)) {
-            cin.clear(); // clears the cin error flag
-
-            //!!Still need to include the limits library to use numeric_limits!!
-
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');} // ignores the max input, up to 'endl'
-
-        cout << "\tInvalid imput!" << endl;
-        cout << "\tPlease enter a number: ";
-
-    } // end of the get userAnswer while loop
-
-    if (userAnswer == correctAnswer) {
-        cout << endl << "Your answer is correct." << endl;
-    }
-    else {
-        cout << endl << "The correct number is " << correctAnswer << endl;
-    }
-}while (userChoice == "yes" || userChoice == "y");
-    remainingAttempts = remainingAttempts - 1;
-    {
-while (userAnswer == correctAnswer) {
-    cout << "Do you want to continue (y=yes | n=no)?";
-    getline(cin, userChoice);
-
-for (int i = 0 ; i < userChoice; i++) {
-
-}
-    if ((userChoice == "y" || userChoice == "yes") ||
-        (userChoice == "n" || userChoice == "no")) {
-        break;
-    } else {
-        cout << "Invalid input, please try again" << endl;
-        cout << endl;
-    }
-}
-
-  //  cout << endl << endl;
-    //cout << "What is " << leftn << " + " << rightn << "?" << endl;
-    // Asking the big question
-   // cin >> answer;
-    // Getting an answer for the question
- //   cout << "Thank you for using our beta version of Math Tutor! More is on the way." << endl;
+switch (mathType) {
+           case MT_ADD:
+               correctAnswer = leftn + rightn;
+               break;
 
 
-    return 0;
-}
+           case MT_SUB:
 
+               if (leftn < rightn) {
+                 tempVar = leftOperand;
+                leftOperand  = rightOperand;
+                rightOperand = tempVar;
+               }
+               correctAnswer = leftn - rightn;
+               break;
+
+
+           case MT_MUL:
+               correctAnswer = leftn * rightn;
+               break;
+
+
+           case MT_DIV:
+               product = leftn * rightn;
+               correctAnswer = product / rightn;
+               break;
+
+
+           default:
+               cout << "Display error -1" << endl;
+               userChoice = "n";
+               continue;
+       }
 for (int i = 1; i <= MAX_ATTEMPTS; i++) {
-
-    cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << mathType << rightn << "=";
-
-    if (userAnswer == correctAnswer) {
-        totalCorrect = totalCorrect + 1;
-        break;
-
-    } else if (remainingAttempts == 0){
-      cout << correctAnswer << endl;
-      totalCorrect - totalIncorrect = finalCorrect;
-    }
-    else {
-      cout << "That is incorrect." << endl;
-      totalIncorrect = totalIncorrect + 1;
-      cout << "You have " << remainingAttempts << " left." << endl;
+                    cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << "*" << rightn << "=";
+                    break;
+                }
+return 0
 }
 
