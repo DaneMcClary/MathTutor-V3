@@ -20,6 +20,11 @@
 
 using namespace std;
 
+void clear_input() {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
 void getline(const istream & cin, int user_choice);
 
 bool operator<(int lhs, const string & rhs);
