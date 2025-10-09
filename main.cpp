@@ -30,6 +30,8 @@ int main() {
 
     int leftn = 0; // left value of the problem
     int rightn = 0; // right value of problem
+    int tempn = 0; // temporary number for subtraction and division problems
+    int product = 0; // makes it so division is always whole numbers
     int correctAnswer = 0; // The correct answer to the problem
     int userAnswer = 0; // The answer the user enters into the problem.
     int totalCorrect = 0; // The total number of answers the user gets correct
@@ -47,18 +49,18 @@ int main() {
 
 
     //   /\  Input any new values here please!
-    cout <<   "*************************************************************" << endl;
-    cout <<   " __  __       _   _       __  __       _   _                 " << endl;
-    cout <<   "|  \/  | __ _| |_| |__   |  \/  | __ _| |_| |_ ___ _ __ ___  " << endl;
-    cout <<   "| |\/| |/ _` | __| '_ \  | |\/| |/ _` | __| __/ _ \ '__/ __| " << endl;
-    cout <<   "| |  | | (_| | |_| | | | | |  | | (_| | |_| ||  __/ |  \__ \ " << endl;
-    cout <<   "|_|  |_|\__,_|\__|_| |_| |_|  |_|\__,_|\__|\__\___|_|  |___/ " << endl;
-    cout <<   " _____      _              __     _______                    " << endl;
-    cout <<   "|_   _|   _| |_ ___  _ __  \ \   / /___ /                    " << endl;
-    cout <<   "  | || | | | __/ _ \| '__|  \ \ / /  |_ \                    " << endl;
-    cout <<   "  | || |_| | || (_) | |      \ V /  ___) |                   " << endl;
-    cout <<   "  |_| \__,_|\__\___/|_|       \_/  |____/                    " << endl;
-    cout <<   "*************************************************************" << endl;
+    cout <<   R"(****************************************************************)" << endl;
+    cout <<   R"(  __  __       _   _         __  __       _   _                 )" << endl;
+    cout <<   R"( |  \/  | __ _| |_| |__     |  \/  | __ _| |_| |_ ___ _ __ ___  )" << endl;
+    cout <<   R"( | |\/| |/ _` | __| '_ \    | |\/| |/ _` | __| __/ _ \ '__/ __| )" << endl;
+    cout <<   R"( | |  | | (_| | |_| | | |   | |  | | (_| | |_| ||  __/ |  \__ \ )" << endl;
+    cout <<   R"( |_|  |_|\__,_|\__|_| |_|   |_|  |_|\__,_|\__|\__\___|_|  |___/ )" << endl;
+    cout <<   R"(  _____      _                __     _______                    )" << endl;
+    cout <<   R"( |_   _|   _| |_ ___  _ __    \ \   / /___ /                    )" << endl;
+    cout <<   R"(   | || | | | __/ _ \| '__|    \ \ / /  |_ \                    )" << endl;
+    cout <<   R"(   | || |_| | || (_) | |        \ V /  ___) |                   )" << endl;
+    cout <<   R"(   |_| \__,_|\__\___/|_|         \_/  |____/                    )" << endl;
+    cout <<   R"(****************************************************************)" << endl;
     cout << "Math is good for your brain." << endl;
     cout << "So lets feed your brain some math!" << endl << endl;
     cout << "What is your name my pupil? :";
@@ -95,6 +97,11 @@ int main() {
 
             case MT_SUB:
                 correctAnswer = leftn - rightn;
+                if (leftn < rightn) {
+                    tempn = leftn;
+                    leftn = rightn;
+                    rightn = tempn;
+                }
                 for (int i = 1; i <= MAX_ATTEMPTS; i++) {
                     cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << "-" << rightn << "=";
                     break;
@@ -139,7 +146,10 @@ int main() {
 
 
                     case MT_DIV:
-                    correctAnswer = leftn / rightn;
+                    correctAnswer = product / rightn;
+                    product = leftn * rightn;
+
+
                 for (int i = 1; i <= MAX_ATTEMPTS; i++) {
                     cout << "[Level #" << mathLevel << "] " << name << ", what does " << leftn << "/" << rightn << "=";
                 break;
