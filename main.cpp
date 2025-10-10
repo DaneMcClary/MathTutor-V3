@@ -1,32 +1,31 @@
-//*
-/* Title: Math Tutor V3
-* Programmer (s):Jacob Diedrichsen, Dane McClary
-* Date: 2025.10.10
-* Github: https://github.com/DaneMcClary/MathTutor-V3
-*Description: An increasingly difficult Math Tutor to help students learn.
-*Description 2:
-*/
+/*****************************************************************************************
+Program......:  Math_Tutor_V3
+ Programmer(s):  Dane McClary, Jacob Diedrichsen
+ Class........:  WSC CSC150 - Section 1 - 9:00 AM
+ Date.........:  2025.10.10
+ GitHub Repo..:  https://github.com/DaneMcClary/MathTutor-V3
+ Description..:  A slightly more difficult math tutor for young children with random values,
+ random math operators, and different levels of difficulty.
+ ****************************************************************************************/
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <cmath>
-#include <cstdlib>
-#include <cctype>
-#include <ios>
-#include <limits>
-#include <random>
-#include <algorithm>
+#include <iostream> // needed for cout and cin
+#include <string> // needed for string data type and getline()
+#include <iomanip> // for inputs and outputs
+#include <cctype> // used for the tolower
+#include <limits> // used for numeric limits
+#include <random> // used for rand and strand
 
 
-using namespace std;
 
+using namespace std; // use the standard namespace
+
+// clears the input
 void clear_input() {
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-
+// start of the main function
 int main() {
 
  std::srand(std::time(0));
@@ -37,8 +36,8 @@ int main() {
 
     const int MAX_ATTEMPTS = 3; // How many attempts the user has.
     const int LEVEL_CHANGE = 10; // Level of increase in the problem.
-    const int NUMROW_LENGTH = 3;
-    const int MAX_LEVEL = 3;
+    const int NUMROW_LENGTH = 3; // Number of correct answers before leveling up
+    const int MAX_LEVEL = 3; // Sets the highest level you can have
 
     int leftn = 0; // left number of the problem
     int rightn = 0; // right number of problem
@@ -50,9 +49,9 @@ int main() {
     int totalIncorrect = 0; // The total number of answers the user gets incorrect
     int mathLevel = 1; // The level of difficult of the math problem
     int currentRange = LEVEL_CHANGE; // Assigns the difficulty of the problem
-    int attemptsRemaining = MAX_ATTEMPTS;
-    int numberCorrectRow = 0;
-    int numberIncorrectRow = 0;
+    int attemptsRemaining = MAX_ATTEMPTS; // ammount of attempts remaining
+    int numberCorrectRow = 0; // number of questions correct in a row
+    int numberIncorrectRow = 0; // number of incorrect answers in a row
 
 
     enum MathType {MT_ADD, MT_SUB, MT_MUL, MT_DIV};
@@ -79,13 +78,13 @@ int main() {
         getline(cin, name); // gets the users name
         cout << "Hello ";
         cout << name << ". Lets learn some math!!!" << endl;
-
+    // generates the problem
     do {
         currentRange = LEVEL_CHANGE * mathLevel;
 
-        leftn = rand() % currentRange + 1;
-        rightn = rand() % currentRange + 1;
-        mathType = static_cast<MathType>(rand() % 4);
+        leftn = rand() % currentRange + 1; // randomises left number
+        rightn = rand() % currentRange + 1; // randomises right number
+        mathType = static_cast<MathType>(rand() % 4); // randomises math type
 
         switch (mathType) {
             case MT_ADD:
@@ -94,7 +93,7 @@ int main() {
 
             case MT_SUB:
 
-                if (leftn < rightn) {
+                if (leftn < rightn) { // makes sure there is no negative numbers
                     tempVar = leftn;
                     leftn  = rightn;
                     rightn = tempVar;
@@ -107,7 +106,7 @@ int main() {
                 break;
 
             case MT_DIV:
-                product = leftn * rightn;
+                product = leftn * rightn; // makes sure that the answer is a positive whole number
                 correctAnswer = product / rightn;
                 leftn = product;
                 break;
@@ -127,7 +126,7 @@ int main() {
                 case MT_DIV: op = '/'; break;
             }
 
-            // Output the current question prompt
+            // outputs the question
             cout << "[Level #" << mathLevel << " | Attempts Left: " << attemptsRemaining
                  << " | Correct Streak: " << numberCorrectRow << "] "
                  << name << ", what does " << leftn << op << rightn << " = ";
@@ -160,21 +159,25 @@ int main() {
                 }
 
             }
-
+            //if the user levels up ot down
             if (numberCorrectRow == NUMROW_LENGTH && mathLevel < MAX_LEVEL) {
                 mathLevel++;
                 numberCorrectRow = 0;
                 cout << "Congratulations you have leveled up. You are now at Level " << mathLevel << "." << endl;
+
             } else if (numberIncorrectRow == NUMROW_LENGTH && mathLevel > 1) {
                 mathLevel--;
                 numberIncorrectRow = 0;
                 cout << "Oh no you have leveled down. You are now at Level " << mathLevel << "." << endl;
             }
-        }while (false); // Loop only runs once per game
+        }while (false); // loop only runs once per game
 
 
         if (attemptsRemaining > 0 && userChoice != "n") {
+
+            //if the user wants to continue
             do {
+
                 cout << endl << "Do you want to continue (y/n)? ";
                 getline(cin, userChoice);
 
@@ -189,7 +192,7 @@ int main() {
                 }
             } while (true);
         } else {
-            // Force the loop to end if attempts are zero
+            // loop ends if attempts are zero
             userChoice = "n";
         }
 
@@ -199,4 +202,4 @@ int main() {
 
     return 0;
 }
-
+//end of program
