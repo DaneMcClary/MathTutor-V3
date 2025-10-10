@@ -82,9 +82,9 @@ int main() {
     do {
         currentRange = LEVEL_CHANGE * mathLevel;
 
-        leftn = rand() % currentRange + 1; // randomises left number
-        rightn = rand() % currentRange + 1; // randomises right number
-        mathType = static_cast<MathType>(rand() % 4); // randomises math type
+        leftn = rand() % currentRange + 1; // randomizes left number
+        rightn = rand() % currentRange + 1; // randomizes right number
+        mathType = static_cast<MathType>(rand() % 4); // randomizes math type
 
         switch (mathType) {
             case MT_ADD:
