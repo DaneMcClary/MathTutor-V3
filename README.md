@@ -27,7 +27,7 @@ can make it to a maximum level of three. The user then gets asked if they want t
 they still have attempts remaining otherwise the program ends. If they answer yes they get another
 question and if they answer no the program ends.
 
-## Console Output Testing Example
+## Console Output Example
 ```
 C:\Users\shann\CLionProjects\MathTutor-V3\cmake-build-debug\MathTutor_V3.exe
 ****************************************************************
@@ -171,5 +171,5 @@ Process finished with exit code 0
 [@JD-4450](https://github.com/JD-4450) Jacob Diedrichsen
 
 
-[Back to Top](#math-tutor-v1)
+[Back to Top](#math-tutor-v3)
 
