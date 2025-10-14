@@ -29,6 +29,7 @@ question and if they answer no the program ends.
 
 ## Console Output Testing Example
 ```
+C:\Users\shann\CLionProjects\MathTutor-V3\cmake-build-debug\MathTutor_V3.exe
 ****************************************************************
   __  __       _   _         __  __       _   _
  |  \/  | __ _| |_| |__     |  \/  | __ _| |_| |_ ___ _ __ ___
@@ -44,24 +45,33 @@ question and if they answer no the program ends.
 Math is good for your brain.
 So lets feed your brain some math!
 
-What is your name my pupil? :Jacob
+What is your name my pupil? :Jacob Diedrichsen
 
-Hello Jacob. Lets learn some math!!!
-[Level #1 | Attempts Left: 3 | Correct Streak: 0] Jacob, what does 20/4 =5
+Hello Jacob Diedrichsen. Lets learn some math!!!
+[Level #1 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 8-3 =abc
 
 
-Great job! That was correct.
 
-Do you want to continue (y/n)?y
-
-[Level #1 | Attempts Left: 3 | Correct Streak: 1] Jacob, what does 10*9 =90
+        Invalid input!
+        Please enter a number:5
 
 
 Great job! That was correct.
 
+Do you want to continue (y/n)?maybe
+
+Invalid input, please enter 'y' or 'n'.
+
 Do you want to continue (y/n)?y
 
-[Level #1 | Attempts Left: 3 | Correct Streak: 2] Jacob, what does 4-4 =0
+[Level #1 | Attempts Left: 3 | Correct Streak: 1] Jacob Diedrichsen, what does 7-2 =5
+
+
+Great job! That was correct.
+
+Do you want to continue (y/n)?yes
+
+[Level #1 | Attempts Left: 3 | Correct Streak: 2] Jacob Diedrichsen, what does 4-1 =3
 
 
 Great job! That was correct.
@@ -69,21 +79,21 @@ Congratulations you have leveled up. You are now at Level 2.
 
 Do you want to continue (y/n)?y
 
-[Level #2 | Attempts Left: 3 | Correct Streak: 0] Jacob, what does 18-9 =9
+[Level #2 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 15-4 =11
 
 
 Great job! That was correct.
 
 Do you want to continue (y/n)?y
 
-[Level #2 | Attempts Left: 3 | Correct Streak: 1] Jacob, what does 13-9 =4
+[Level #2 | Attempts Left: 3 | Correct Streak: 1] Jacob Diedrichsen, what does 12+10 =22
 
 
 Great job! That was correct.
 
 Do you want to continue (y/n)?y
 
-[Level #2 | Attempts Left: 3 | Correct Streak: 2] Jacob, what does 144/12 =12
+[Level #2 | Attempts Left: 3 | Correct Streak: 2] Jacob Diedrichsen, what does 6*2 =12
 
 
 Great job! That was correct.
@@ -91,31 +101,59 @@ Congratulations you have leveled up. You are now at Level 3.
 
 Do you want to continue (y/n)?y
 
-[Level #3 | Attempts Left: 3 | Correct Streak: 0] Jacob, what does 27/9 =8
+[Level #3 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 23-3 =20
 
 
-That is incorrect. The correct answer is 3.
-
-Do you want to continue (y/n)?y
-
-[Level #3 | Attempts Left: 2 | Correct Streak: 0] Jacob, what does 20*1 =7
-
-
-That is incorrect. The correct answer is 20.
+Great job! That was correct.
 
 Do you want to continue (y/n)?y
 
-[Level #3 | Attempts Left: 1 | Correct Streak: 0] Jacob, what does 27-16 =5
+[Level #3 | Attempts Left: 3 | Correct Streak: 1] Jacob Diedrichsen, what does 360/20 =3
 
 
-That is incorrect. The correct answer is 11.
+That is incorrect. The correct answer is 18.
 
-You are out of attempts.
-Oh no you have leveled down. You are now at Level 2.
-Thank you for using Math Tutor V3, Jacob!
+Do you want to continue (y/n)?y
+
+[Level #3 | Attempts Left: 2 | Correct Streak: 0] Jacob Diedrichsen, what does 1*16 =16
+
+
+Great job! That was correct.
+
+Do you want to continue (y/n)?no
+
+Thank you for using Math Tutor V3, Jacob Diedrichsen!
 
 Process finished with exit code 0
 
+```
+This is what would happen if of the user ran out of attempts because of answering the questions incorrectly.
+
+```
+Hello Jacob Diedrichsen. Lets learn some math!!!
+[Level #1 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 90/9 =8
+
+
+That is incorrect. The correct answer is 10.
+
+Do you want to continue (y/n)?y
+
+[Level #1 | Attempts Left: 2 | Correct Streak: 0] Jacob Diedrichsen, what does 2*2 =5
+
+
+That is incorrect. The correct answer is 4.
+
+Do you want to continue (y/n)?y
+
+[Level #1 | Attempts Left: 1 | Correct Streak: 0] Jacob Diedrichsen, what does 8/2 =2
+
+
+That is incorrect. The correct answer is 4.
+
+You are out of attempts.
+Thank you for using Math Tutor V3, Jacob Diedrichsen!
+
+Process finished with exit code 0
 
 ```
 ## How to build & run
