@@ -4,8 +4,13 @@ Program......:  Math_Tutor_V3
  Class........:  WSC CSC150 - Section 1 - 9:00 AM
  Date.........:  2025.10.10
  GitHub Repo..:  https://github.com/DaneMcClary/MathTutor-V3
- Description..:  A slightly more difficult math tutor for young children with random values,
- random math operators, and different levels of difficulty.
+ Description..: An updated math tutor that will give more difficult questions the longer you play.
+                - 3 chances to answer each question correctly
+                - Random math operator and numbers each question
+                - level 1 generates random numbers between 1-10
+                - After 3 correct answers your level will increase by 1
+                - Each ascending level will increase the range by 10
+                - Option to continue playing after each question
  ****************************************************************************************/
 
 #include <iostream> // needed for cout and cin
@@ -37,7 +42,8 @@ int main() {
     MathType mathType = MT_ADD;
 
     int leftn = 0; // left number of the problem
-    int rightn = 0; // right number of problem
+    int rightn = 0; // right number of pr
+    char op = ' '; // math operator
     int product = 0; // used to make all division problems have whole numbers
     int tempVar = 0; // used to make sure subtraction problems dont give negatives
     int correctAnswer = 0; // The correct answer to the problem
@@ -82,10 +88,12 @@ int main() {
 
         switch (mathType) {
             case MT_ADD:
+                op = '+';
                 correctAnswer = leftn + rightn;
                 break;
 
             case MT_SUB:
+                op = '-';
 
                 if (leftn < rightn) {
                     // makes sure there is no negative numbers
@@ -97,10 +105,12 @@ int main() {
                 break;
 
             case MT_MUL:
+                op = '*';
                 correctAnswer = leftn * rightn;
                 break;
 
             case MT_DIV:
+                op = '/';
                 product = leftn * rightn; // makes sure that the answer is a positive whole number
                 correctAnswer = product / rightn;
                 leftn = product;
@@ -113,17 +123,7 @@ int main() {
         }
 
         for (int i = 0; i < 1; i++) {
-            char op = ' ';
-            switch (mathType) {
-                case MT_ADD: op = '+';
-                    break;
-                case MT_SUB: op = '-';
-                    break;
-                case MT_MUL: op = '*';
-                    break;
-                case MT_DIV: op = '/';
-                    break;
-            }
+
 
             // outputs the question
             cout << "[Level #" << mathLevel << " | Attempts Left: " << attemptsRemaining
