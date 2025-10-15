@@ -13,19 +13,13 @@ https://youtu.be/eVGEea7adDM?si=cz1Fbqxr9VgioIEh
 
 ## Summary
 
-This is a small console program that is seen as a tool to help young students study math.
-They learn different math types like addition, subtraction, multiplication, and division. 
-In the previous version of the code the numbers and types were randomized. The program now
-has a level system where the questions get more difficult the more question the user gets right.
-It starts off with ACSII art,lists a simple phrase, and asks the user for their name. Then, the
-program gives the user a question and the output includes the level they are on, the amount of 
-attempts they have left, and a streak of questions they have answered correctly. After the user
-answers the program checks to see if their response is right or wrong. If it is right the streak 
-increases by one but if they get it wrong their streak goes back to zero, and they lose an attempt. 
-Once the streak reaches three the user reaches the next level with more difficult questions, and they
-can make it to a maximum level of three. The user then gets asked if they want to continue or not if 
-they still have attempts remaining otherwise the program ends. If they answer yes they get another
-question and if they answer no the program ends.
+- Simple console program ment to help young students with simple math problems
+- Randomly chosen math opporator (add, sub, mult, div) and numbers each question
+- Features user input to set Name and to answer questions
+- 3 chances per question, 3 correct answers in a row raises the level
+- Level 1 begins with a number range of 1-10, each level raises that range by 10 (ex: 1-20 and so on)
+- Max level is currently 3
+- After each question the user is asked if they want to continue playing
 
 ## Console Output Example
 ```
@@ -172,4 +166,5 @@ Process finished with exit code 0
 
 
 [Back to Top](#math-tutor-v3)
+
 
