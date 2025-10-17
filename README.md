@@ -23,100 +23,88 @@ https://youtu.be/eVGEea7adDM?si=cz1Fbqxr9VgioIEh
 
 ## Console Output Example
 ```
-C:\Users\shann\CLionProjects\MathTutor-V3\cmake-build-debug\MathTutor_V3.exe
-****************************************************************
-  __  __       _   _         __  __       _   _
- |  \/  | __ _| |_| |__     |  \/  | __ _| |_| |_ ___ _ __ ___
- | |\/| |/ _` | __| '_ \    | |\/| |/ _` | __| __/ _ \ '__/ __|
- | |  | | (_| | |_| | | |   | |  | | (_| | |_| ||  __/ |  \__ \
- |_|  |_|\__,_|\__|_| |_|   |_|  |_|\__,_|\__|\__\___|_|  |___/
-  _____      _                __     _______
- |_   _|   _| |_ ___  _ __    \ \   / /___ /
-   | || | | | __/ _ \| '__|    \ \ / /  |_ \
-   | || |_| | || (_) | |        \ V /  ___) |
-   |_| \__,_|\__\___/|_|         \_/  |____/
-****************************************************************
-Math is good for your brain.
-So lets feed your brain some math!
+C:\Users\shann\CLionProjects\MathTutor-V3.5\cmake-build-debug\MathTutor_V3.exe
+     ****************************************************************
+       __  __       _   _         __  __       _   _
+      |  \/  | __ _| |_| |__     |  \/  | __ _| |_| |_ ___ _ __ ___
+      | |\/| |/ _` | __| '_ \    | |\/| |/ _` | __| __/ _ \ '__/ __|
+      | |  | | (_| | |_| | | |   | |  | | (_| | |_| ||  __/ |  \__ \
+      |_|  |_|\__,_|\__|_| |_|   |_|  |_|\__,_|\__|\__\___|_|  |___/
+       _____      _                __     _______
+      |_   _|   _| |_ ___  _ __    \ \   / /___ /
+        | || | | | __/ _ \| '__|    \ \ / /  |_ \
+        | || |_| | || (_) | |        \ V /  ___) |
+        |_| \__,_|\__\___/|_|         \_/  |____/
+     ****************************************************************
+     Math is good for your brain.
+     So lets feed your brain some math!
 
-What is your name my pupil? :Jacob Diedrichsen
+     What is your name my pupil? :Jacob
 
-Hello Jacob Diedrichsen. Lets learn some math!!!
-[Level #1 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 8-3 =abc
+     Hello Jacob. Lets learn some math!!!
 
-
-
-        Invalid input!
-        Please enter a number:5
+     [Level #1 | Attempts Left: 3 | Correct Streak: 0] Jacob, what does 2*5 =10
 
 
-Great job! That was correct.
+    Great job! That was correct.
 
-Do you want to continue (y/n)?maybe
-
-Invalid input, please enter 'y' or 'n'.
-
-Do you want to continue (y/n)?y
-
-[Level #1 | Attempts Left: 3 | Correct Streak: 1] Jacob Diedrichsen, what does 7-2 =5
+     Do you want to continue (y/n)?y
 
 
-Great job! That was correct.
-
-Do you want to continue (y/n)?yes
-
-[Level #1 | Attempts Left: 3 | Correct Streak: 2] Jacob Diedrichsen, what does 4-1 =3
+     [Level #1 | Attempts Left: 3 | Correct Streak: 1] Jacob, what does 5+5 =10
 
 
-Great job! That was correct.
-Congratulations you have leveled up. You are now at Level 2.
+    Great job! That was correct.
 
-Do you want to continue (y/n)?y
-
-[Level #2 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 15-4 =11
+     Do you want to continue (y/n)?yes
 
 
-Great job! That was correct.
-
-Do you want to continue (y/n)?y
-
-[Level #2 | Attempts Left: 3 | Correct Streak: 1] Jacob Diedrichsen, what does 12+10 =22
+     [Level #1 | Attempts Left: 3 | Correct Streak: 2] Jacob, what does 2+5 =7
 
 
-Great job! That was correct.
+    Great job! That was correct.
+     Congratulations you have leveled up. You are now at Level 2.
 
-Do you want to continue (y/n)?y
+     Do you want to continue (y/n)?abc
 
-[Level #2 | Attempts Left: 3 | Correct Streak: 2] Jacob Diedrichsen, what does 6*2 =12
+     Invalid input, please enter 'y' or 'n'.
 
-
-Great job! That was correct.
-Congratulations you have leveled up. You are now at Level 3.
-
-Do you want to continue (y/n)?y
-
-[Level #3 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 23-3 =20
+     Do you want to continue (y/n)?y
 
 
-Great job! That was correct.
-
-Do you want to continue (y/n)?y
-
-[Level #3 | Attempts Left: 3 | Correct Streak: 1] Jacob Diedrichsen, what does 360/20 =3
+     [Level #2 | Attempts Left: 3 | Correct Streak: 0] Jacob, what does 12-4 =8
 
 
-That is incorrect. The correct answer is 18.
+    Great job! That was correct.
 
-Do you want to continue (y/n)?y
-
-[Level #3 | Attempts Left: 2 | Correct Streak: 0] Jacob Diedrichsen, what does 1*16 =16
+     Do you want to continue (y/n)?yes
 
 
-Great job! That was correct.
+     [Level #2 | Attempts Left: 3 | Correct Streak: 1] Jacob, what does 72/6 =12
 
-Do you want to continue (y/n)?no
 
-Thank you for using Math Tutor V3, Jacob Diedrichsen!
+    Great job! That was correct.
+
+     Do you want to continue (y/n)?y
+
+
+     [Level #2 | Attempts Left: 3 | Correct Streak: 2] Jacob, what does 44/11 =4
+
+
+    Great job! That was correct.
+     Congratulations you have leveled up. You are now at Level 3.
+
+     Do you want to continue (y/n)?y
+
+
+     [Level #3 | Attempts Left: 3 | Correct Streak: 0] Jacob, what does 675/27 = 25
+
+
+    Great job! That was correct.
+
+     Do you want to continue (y/n)?no
+
+     Thank you for using Math Tutor V3, Jacob!
 
 Process finished with exit code 0
 
@@ -124,28 +112,31 @@ Process finished with exit code 0
 This is what would happen if of the user ran out of attempts because of answering the questions incorrectly.
 
 ```
-Hello Jacob Diedrichsen. Lets learn some math!!!
-[Level #1 | Attempts Left: 3 | Correct Streak: 0] Jacob Diedrichsen, what does 90/9 =8
+   Hello Jacob. Lets learn some math!!!
+
+     [Level #1 | Attempts Left: 3 | Correct Streak: 0] Jacob, what does 9*2 =6
 
 
-That is incorrect. The correct answer is 10.
+     That is incorrect. The correct answer is 18.
 
-Do you want to continue (y/n)?y
-
-[Level #1 | Attempts Left: 2 | Correct Streak: 0] Jacob Diedrichsen, what does 2*2 =5
+     Do you want to continue (y/n)?y
 
 
-That is incorrect. The correct answer is 4.
-
-Do you want to continue (y/n)?y
-
-[Level #1 | Attempts Left: 1 | Correct Streak: 0] Jacob Diedrichsen, what does 8/2 =2
+     [Level #1 | Attempts Left: 2 | Correct Streak: 0] Jacob, what does 4*4 =9
 
 
-That is incorrect. The correct answer is 4.
+     That is incorrect. The correct answer is 16.
 
-You are out of attempts.
-Thank you for using Math Tutor V3, Jacob Diedrichsen!
+     Do you want to continue (y/n)?y
+
+
+     [Level #1 | Attempts Left: 1 | Correct Streak: 0] Jacob, what does 1/1 =9
+
+
+     That is incorrect. The correct answer is 1.
+
+     You are out of attempts.
+     Thank you for using Math Tutor V3, Jacob!
 
 Process finished with exit code 0
 

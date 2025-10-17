@@ -46,38 +46,40 @@ int main() {
     char op = ' '; // math operator
     int product = 0; // used to make all division problems have whole numbers
     int tempVar = 0; // used to make sure subtraction problems dont give negatives
-    int correctAnswer = 0; // The correct answer to the problem
-    int userAnswer = 0; // The answer the user enters into the problem.
-    int totalCorrect = 0; // The total number of answers the user gets correct
-    int totalIncorrect = 0; // The total number of answers the user gets incorrect
-    int mathLevel = 1; // The level of difficult of the math problem
-    int currentRange = LEVEL_CHANGE; // Assigns the difficulty of the problem
-    int attemptsRemaining = MAX_ATTEMPTS; // ammount of attempts remaining
-    int numberCorrectRow = 0; // number of questions correct in a row
-    int numberIncorrectRow = 0; // number of incorrect answers in a row
+    int correctAnswer      = 0; // The correct answer to the problem
+    int userAnswer         = 0;     // The answer the user enters into the problem.
+    int totalCorrect       = 0;            // The total number of answers the user gets correct
+    int totalIncorrect     = 0;            // The total number of answers the user gets incorrect
+    int mathLevel          = 1;            // The level of difficult of the math problem
+    int currentRange       = LEVEL_CHANGE; // Assigns the difficulty of the problem
+    int attemptsRemaining  = MAX_ATTEMPTS; // ammount of attempts remaining
+    int numberCorrectRow   = 0;            // number of questions correct in a row
+    int numberIncorrectRow = 0;            // number of incorrect answers in a row
 
     string name = "?"; // Gets the users name
     string userChoice = "?"; // Gets the users choice to continue or not
 
     //   /\  Input any new values here please!
-    cout << R"(****************************************************************)" << endl;
-    cout << R"(  __  __       _   _         __  __       _   _                 )" << endl;
-    cout << R"( |  \/  | __ _| |_| |__     |  \/  | __ _| |_| |_ ___ _ __ ___  )" << endl;
-    cout << R"( | |\/| |/ _` | __| '_ \    | |\/| |/ _` | __| __/ _ \ '__/ __| )" << endl;
-    cout << R"( | |  | | (_| | |_| | | |   | |  | | (_| | |_| ||  __/ |  \__ \ )" << endl;
-    cout << R"( |_|  |_|\__,_|\__|_| |_|   |_|  |_|\__,_|\__|\__\___|_|  |___/ )" << endl;
-    cout << R"(  _____      _                __     _______                    )" << endl;
-    cout << R"( |_   _|   _| |_ ___  _ __    \ \   / /___ /                    )" << endl;
-    cout << R"(   | || | | | __/ _ \| '__|    \ \ / /  |_ \                    )" << endl;
-    cout << R"(   | || |_| | || (_) | |        \ V /  ___) |                   )" << endl;
-    cout << R"(   |_| \__,_|\__\___/|_|         \_/  |____/                    )" << endl;
-    cout << R"(****************************************************************)" << endl;
-    cout << "Math is good for your brain." << endl;
-    cout << "So lets feed your brain some math!" << endl << endl;
-    cout << "What is your name my pupil? :";
+    cout << R"(     ****************************************************************)" << endl;
+    cout << R"(       __  __       _   _         __  __       _   _                 )" << endl;
+    cout << R"(      |  \/  | __ _| |_| |__     |  \/  | __ _| |_| |_ ___ _ __ ___  )" << endl;
+    cout << R"(      | |\/| |/ _` | __| '_ \    | |\/| |/ _` | __| __/ _ \ '__/ __| )" << endl;
+    cout << R"(      | |  | | (_| | |_| | | |   | |  | | (_| | |_| ||  __/ |  \__ \ )" << endl;
+    cout << R"(      |_|  |_|\__,_|\__|_| |_|   |_|  |_|\__,_|\__|\__\___|_|  |___/ )" << endl;
+    cout << R"(       _____      _                __     _______                    )" << endl;
+    cout << R"(      |_   _|   _| |_ ___  _ __    \ \   / /___ /                    )" << endl;
+    cout << R"(        | || | | | __/ _ \| '__|    \ \ / /  |_ \                    )" << endl;
+    cout << R"(        | || |_| | || (_) | |        \ V /  ___) |                   )" << endl;
+    cout << R"(        |_| \__,_|\__\___/|_|         \_/  |____/                    )" << endl;
+    cout << R"(     ****************************************************************)" << endl;
+
+    cout << "     " << "Math is good for your brain." << endl;
+    cout << "     " << "So lets feed your brain some math!" << endl << endl;
+    cout << "     " << "What is your name my pupil? :";
+
     getline(cin, name); // gets the users name
-    cout << "Hello ";
-    cout << name << ". Lets learn some math!!!" << endl;
+
+    cout << "     " << "Hello "<< name << ". Lets learn some math!!!" << endl;
     // generates the problem
     do {
         currentRange = LEVEL_CHANGE * mathLevel;
@@ -117,7 +119,7 @@ int main() {
                 break;
 
             default:
-                cout << "Display error -1" << endl;
+                cout << "     " << "Display error -1" << endl;
                 userChoice = "n";
                 continue;
         }
@@ -126,7 +128,8 @@ int main() {
 
 
             // outputs the question
-            cout << "[Level #" << mathLevel << " | Attempts Left: " << attemptsRemaining
+            cout << endl;
+            cout << "     " << "[Level #" << mathLevel << " | Attempts Left: " << attemptsRemaining
                     << " | Correct Streak: " << numberCorrectRow << "] "
                     << name << ", what does " << leftn << op << rightn << " = ";
 
@@ -134,26 +137,26 @@ int main() {
             while (!(cin >> userAnswer)) {
                 clear_input();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "\tInvalid input!" << endl;
-                cout << "\tPlease enter a number: ";
+                cout << "     " << "\tInvalid input!" << endl;
+                cout << "     " << "\tPlease enter a number: ";
             }
 
             clear_input();
 
             if (userAnswer == correctAnswer) {
-                cout << endl << "Great job! That was correct." << endl;
+                cout << endl << "    " << "Great job! That was correct." << endl;
                 totalCorrect++;
                 numberCorrectRow++;
                 numberIncorrectRow = 0;
             } else {
-                cout << endl << "That is incorrect. The correct answer is " << correctAnswer << "." << endl;
+                cout << endl << "     " << "That is incorrect. The correct answer is " << correctAnswer << "." << endl;
                 totalIncorrect++;
                 numberIncorrectRow++;
                 numberCorrectRow = 0;
                 attemptsRemaining--;
 
                 if (attemptsRemaining <= 0) {
-                    cout << endl << "You are out of attempts. " << endl;
+                    cout << endl << "     ""You are out of attempts. " << endl;
                     userChoice = "n";
                 }
             }
@@ -161,11 +164,11 @@ int main() {
             if (numberCorrectRow == NUMROW_LENGTH && mathLevel < MAX_LEVEL) {
                 mathLevel++;
                 numberCorrectRow = 0;
-                cout << "Congratulations you have leveled up. You are now at Level " << mathLevel << "." << endl;
+                cout << "     " << "Congratulations you have leveled up. You are now at Level " << mathLevel << "." << endl;
             } else if (numberIncorrectRow == NUMROW_LENGTH && mathLevel > 1) {
                 mathLevel--;
                 numberIncorrectRow = 0;
-                cout << "Oh no you have leveled down. You are now at Level " << mathLevel << "." << endl;
+                cout << "     " << "Oh no you have leveled down. You are now at Level " << mathLevel << "." << endl;
             }
         }
         while (false); // loop only runs once per game
@@ -174,7 +177,7 @@ int main() {
         if (attemptsRemaining > 0 && userChoice != "n") {
             //if the user wants to continue
             while (true) {
-                cout << endl << "Do you want to continue (y/n)? ";
+                cout << endl << "     " << "Do you want to continue (y/n)? ";
                 getline(cin, userChoice);
 
                 for (int i = 0; i < userChoice.size(); i++) {
@@ -184,7 +187,7 @@ int main() {
                 if ((userChoice == "y" || userChoice == "yes" || userChoice == "n" || userChoice == "no")) {
                     break;
                 } else {
-                    cout << "Invalid input, please enter 'y' or 'n'." << endl;
+                    cout << "     " << "Invalid input, please enter 'y' or 'n'." << endl;
                 }
             };
         } else {
@@ -193,7 +196,7 @@ int main() {
         }
     } while (userChoice == "y" || userChoice == "yes");
 
-    cout << "Thank you for using Math Tutor V3, " << name << "!" << endl;
+    cout << "     " << "Thank you for using Math Tutor V3, " << name << "!" << endl;
 
     return 0;
 }
