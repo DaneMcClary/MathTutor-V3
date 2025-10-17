@@ -33,21 +33,22 @@ void clear_input() {
 int main() {
     std::srand(std::time(0));
 
-    const int MAX_ATTEMPTS = 3; // How many attempts the user has.
-    const int LEVEL_CHANGE = 10; // Level of increase in the problem.
-    const int NUMROW_LENGTH = 3; // Number of correct answers before leveling up
-    const int MAX_LEVEL = 3; // Sets the highest level you can have
+    const int MAX_ATTEMPTS  = 3;  // How many attempts the user has.
+    const int LEVEL_CHANGE  = 10; // Level of increase in the problem.
+    const int NUMROW_LENGTH = 3;  // Number of correct answers before leveling up
+    const int MAX_LEVEL     = 3;  // Sets the highest level you can have
 
     enum MathType { MT_ADD, MT_SUB, MT_MUL, MT_DIV };
     MathType mathType = MT_ADD;
 
-    int leftn = 0; // left number of the problem
-    int rightn = 0; // right number of pr
-    char op = ' '; // math operator
-    int product = 0; // used to make all division problems have whole numbers
-    int tempVar = 0; // used to make sure subtraction problems dont give negatives
-    int correctAnswer      = 0; // The correct answer to the problem
-    int userAnswer         = 0;     // The answer the user enters into the problem.
+    char op                = ' ';          // math operator
+
+    int leftn              = 0;            // left number of the problem
+    int rightn             = 0;            // right number of pr
+    int product            = 0;            // used to make all division problems have whole numbers
+    int tempVar            = 0;            // used to make sure subtraction problems dont give negatives
+    int correctAnswer      = 0;            // The correct answer to the problem
+    int userAnswer         = 0;            // The answer the user enters into the problem.
     int totalCorrect       = 0;            // The total number of answers the user gets correct
     int totalIncorrect     = 0;            // The total number of answers the user gets incorrect
     int mathLevel          = 1;            // The level of difficult of the math problem
@@ -56,7 +57,7 @@ int main() {
     int numberCorrectRow   = 0;            // number of questions correct in a row
     int numberIncorrectRow = 0;            // number of incorrect answers in a row
 
-    string name = "?"; // Gets the users name
+    string name       = "?"; // Gets the users name
     string userChoice = "?"; // Gets the users choice to continue or not
 
     //   /\  Input any new values here please!
