@@ -172,7 +172,7 @@ int main() {
                 cout << "     " << "Oh no you have leveled down. You are now at Level " << mathLevel << "." << endl;
             }
         }
-        while (false); // loop only runs once per game
+
 
 
         if (attemptsRemaining > 0 && userChoice != "n") {
@@ -191,9 +191,6 @@ int main() {
                     cout << "     " << "Invalid input, please enter 'y' or 'n'." << endl;
                 }
             };
-        } else {
-            // loop ends if attempts are zero
-            userChoice = "n";
         }
     } while (userChoice == "y" || userChoice == "yes");
 
